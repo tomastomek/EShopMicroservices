@@ -1,6 +1,4 @@
-﻿using Catalog.API.Products.CreateProduct;
-
-namespace Catalog.API.Products.GetProductById
+﻿namespace Catalog.API.Products.GetProductById
 {
     // we dont't have request object, we get id information from request parameters
     // public record GetProductByIdRequest(Guid id)
@@ -20,7 +18,7 @@ namespace Catalog.API.Products.GetProductById
                 return Results.Ok(response);
             })
             .WithName("GetProductById")
-            .Produces<CreateProductResponse>(StatusCodes.Status200OK)
+            .Produces<GetProductByIdResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Get Products By Id")
             .WithDescription("Get Products By Id");

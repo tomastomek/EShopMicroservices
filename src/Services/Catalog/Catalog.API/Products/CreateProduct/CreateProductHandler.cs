@@ -10,14 +10,30 @@
         decimal Price) : ICommand<CreateProductResult>;
     public record CreateProductResult(Guid Id);
 
+    // in angle brackets we specify object, that is being validated
+    public class CreateProductCommandValidator
+        : AbstractValidator<CreateProductCommand>
+    {
+        public CreateProductCommandValidator()
+        {
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
+            RuleFor(x => x.Category).NotEmpty().WithMessage("Category is required");
+            RuleFor(x => x.ImageFile).NotEmpty().WithMessage("ImageFile is required");
+            RuleFor(x => x.Price).GreaterThan(0).WithMessage("Price must be greater than 0");
+        }
+    }
+
     // using primary constructor inject IDocumentSession
-    internal class CreateProductCommandHandler(IDocumentSession session)
+    internal class CreateProductCommandHandler
+        (IDocumentSession session, ILogger<CreateProductCommandHandler> logger)
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         // command triggers command handler
         public async Task<CreateProductResult> Handle
             (CreateProductCommand command, CancellationToken cancellationToken)
         {
+            logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
+
             // Create product entity from command object
             var product = new Product
             {

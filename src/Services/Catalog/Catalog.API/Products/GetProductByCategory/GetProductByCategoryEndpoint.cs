@@ -1,6 +1,4 @@
-﻿using Catalog.API.Products.CreateProduct;
-
-namespace Catalog.API.Products.GetProductByCategory
+﻿namespace Catalog.API.Products.GetProductByCategory
 {
     // not need, we get category information from request parameter
     //public record GetProductByCategoryRequest()
@@ -20,7 +18,7 @@ namespace Catalog.API.Products.GetProductByCategory
                 return Results.Ok(response);
             })
             .WithName("GetProductByCategory")
-            .Produces<CreateProductResponse>(StatusCodes.Status200OK)
+            .Produces<GetProductByCategoryResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Get Products By Category")
             .WithDescription("Get Products By Category");

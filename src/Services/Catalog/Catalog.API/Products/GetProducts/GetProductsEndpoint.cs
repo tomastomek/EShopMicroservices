@@ -1,6 +1,4 @@
-﻿using Catalog.API.Products.CreateProduct;
-
-namespace Catalog.API.Products.GetProducts
+﻿namespace Catalog.API.Products.GetProducts
 {
     // we dont send any data, no need for this
     // public record GetProductsRequest();
@@ -19,7 +17,7 @@ namespace Catalog.API.Products.GetProducts
                 return Results.Ok(response);
             })
             .WithName("GetProducts")
-            .Produces<CreateProductResponse>(StatusCodes.Status200OK)
+            .Produces<GetProductsResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Get Products")
             .WithDescription("Get Products");
