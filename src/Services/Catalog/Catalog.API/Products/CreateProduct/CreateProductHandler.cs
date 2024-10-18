@@ -25,15 +25,13 @@
 
     // using primary constructor inject IDocumentSession
     internal class CreateProductCommandHandler
-        (IDocumentSession session, ILogger<CreateProductCommandHandler> logger)
+        (IDocumentSession session)
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         // command triggers command handler
         public async Task<CreateProductResult> Handle
             (CreateProductCommand command, CancellationToken cancellationToken)
         {
-            logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
-
             // Create product entity from command object
             var product = new Product
             {
