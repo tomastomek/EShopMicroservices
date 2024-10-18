@@ -9,7 +9,7 @@
     {
         public async Task<GetProductByIdResult> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
         {
-            logger.LogInformation("GetProductsQueryHandler.Handle called with {@Query}", query);
+            logger.LogInformation("GetProductByIdQueryHandler.Handle called with {@Query}", query);
 
             // LoadAsync - load or find a single object with either numeric or Guid id
             var product = await session.LoadAsync<Product>(query.Id, cancellationToken);
