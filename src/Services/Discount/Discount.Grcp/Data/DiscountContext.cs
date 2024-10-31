@@ -17,7 +17,7 @@ namespace Discount.Grcp.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Coupon>().HasData(
-                new Coupon { Id = 1, ProductName = "IPhone 16", Description = "IPhone Discount", Amount = 150},
+                new Coupon { Id = 1, ProductName = "IPhone X", Description = "IPhone Discount", Amount = 150},
                 new Coupon { Id = 2, ProductName = "Samsung S24", Description = "Samsung Discount", Amount = 100 }
                 );
         }
