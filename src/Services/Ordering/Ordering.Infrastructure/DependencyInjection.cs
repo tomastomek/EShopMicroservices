@@ -9,13 +9,14 @@ namespace Ordering.Infrastructure
             (this IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("Database");
-            return services;
 
             //Add services to the container
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //  options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options =>
+              options.UseSqlServer(connectionString));
 
             //services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+
+            return services;
         }
     }
 }
