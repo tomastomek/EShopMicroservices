@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="DTOs\" />
     <Folder Include="Order\Commands\" />
     <Folder Include="Order\EventHandlers\" />
     <Folder Include="Order\Queries\" />
