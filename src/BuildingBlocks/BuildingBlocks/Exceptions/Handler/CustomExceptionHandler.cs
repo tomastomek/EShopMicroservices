@@ -14,7 +14,7 @@ namespace BuildingBlocks.Exceptions.Handler
             (HttpContext context, Exception exception, CancellationToken cancellationToken)
         {
             logger.LogError(
-                "Error Message: {exceptionMessage}, Time of occurence{time}",
+                "Error Message: {exceptionMessage}, Time of occurence {time}",
                 exception.Message, DateTime.UtcNow);
 
             (string Detail, string Title, int StatusCode) details = exception switch
