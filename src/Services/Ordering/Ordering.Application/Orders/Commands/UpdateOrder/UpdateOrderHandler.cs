@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-using Ordering.Application.Data;
-using Ordering.Application.Dtos;
-namespace Ordering.Application.Orders.Commands.UpdateOrder
+﻿namespace Ordering.Application.Orders.Commands.UpdateOrder
 {
     public class UpdateOrderCommandHandler(IApplicationDbContext dbContext)
         : ICommandHandler<UpdateOrderCommand, UpdateOrderResult>
@@ -10,10 +7,9 @@ namespace Ordering.Application.Orders.Commands.UpdateOrder
             (UpdateOrderCommand command, CancellationToken cancellationToken)
         {
             var orderId = OrderId.Of(command.Order.Id);
-            // FindAsync expects array, but we pass single value -> [value]
-            // we can use it without square brackets
-            // more performant than FirstOrDefault
-            var order = await dbContext.Orders.FindAsync([orderId], cancellationToken);
+            var order = await dbContext.Orders
+                .Include(o => o.OrderItems)
+                .FirstOrDefaultAsync(o => o.Id == orderId, cancellationToken);
 
             if (order is null)
             {

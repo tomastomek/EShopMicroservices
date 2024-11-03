@@ -90,7 +90,7 @@ namespace Ordering.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrdersItems",
+                name: "OrderItems",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -105,15 +105,15 @@ namespace Ordering.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrdersItems", x => x.Id);
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrdersItems_Orders_OrderId",
+                        name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrdersItems_Products_ProductId",
+                        name: "FK_OrderItems_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -132,13 +132,13 @@ namespace Ordering.Infrastructure.Data.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrdersItems_OrderId",
-                table: "OrdersItems",
+                name: "IX_OrderItems_OrderId",
+                table: "OrderItems",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrdersItems_ProductId",
-                table: "OrdersItems",
+                name: "IX_OrderItems_ProductId",
+                table: "OrderItems",
                 column: "ProductId");
         }
 
@@ -146,7 +146,7 @@ namespace Ordering.Infrastructure.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrdersItems");
+                name: "OrderItems");
 
             migrationBuilder.DropTable(
                 name: "Orders");
