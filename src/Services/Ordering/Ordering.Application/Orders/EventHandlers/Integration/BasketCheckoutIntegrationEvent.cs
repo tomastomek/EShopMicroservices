@@ -10,7 +10,7 @@ namespace Ordering.Application.Orders.EventHandlers.Integration
     {
         public async Task Consume(ConsumeContext<BasketCheckoutEvent> context)
         {
-            // Create new order and start fullfillment process
+            // Create new order and start fulfilment process
             logger.LogInformation("Integration Event handled: {IntegrationEvent}", context.Message.GetType().Name);
 
             var command = MapToCreateOrderCommand(context.Message);
