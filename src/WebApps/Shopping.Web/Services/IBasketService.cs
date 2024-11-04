@@ -4,7 +4,7 @@ namespace Shopping.Web.Services
 {
     public interface IBasketService
     {
-        [Get("/basket-service/basket/{userName")]
+        [Get("/basket-service/basket/{userName}")]
         Task<GetBasketResponse> GetBasket(string userName);
 
 
@@ -22,7 +22,7 @@ namespace Shopping.Web.Services
         public async Task<ShoppingCartModel> LoadUserBasket()
         {
             // Get basket if it doesn't exist, else create new with default logged in user name
-            var userName = "swb";
+            var userName = "swn";
             ShoppingCartModel basket;
 
             try
